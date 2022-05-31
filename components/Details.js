@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato-Regular',
     fontSize: 16,
     color: colors.darkGray,
-    height: 85,
+    height: 75,
   },
 
   infoWrapper: {
