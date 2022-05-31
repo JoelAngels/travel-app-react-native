@@ -39,6 +39,33 @@ const Details = ({navigation, route}) => {
           <Text style={styles.descriptionText}>{item.description}</Text>
         </View>
       </View>
+
+      {/* Info Section */}
+      <View style={styles.infoWrapper}>
+        <View style={styles.infoItem}>
+          <Text style={styles.infoTitle}>PRICE</Text>
+          <View style={styles.infoTextWrapper}>
+            <Text style={styles.infoText}>${item.price}</Text>
+            <Text style={styles.infoSubText}>/person</Text>
+          </View>
+        </View>
+
+        <View style={styles.infoItem}>
+          <Text style={styles.infoTitle}>RATING</Text>
+          <View style={styles.infoTextWrapper}>
+            <Text style={styles.infoText}>${item.rating}</Text>
+            <Text style={styles.infoSubText}>/5</Text>
+          </View>
+        </View>
+
+        <View style={styles.infoItem}>
+          <Text style={styles.infoTitle}>Duration</Text>
+          <View style={styles.infoTextWrapper}>
+            <Text style={styles.infoText}>${item.duration}</Text>
+            <Text style={styles.infoSubText}> hours</Text>
+          </View>
+        </View>
+      </View>
     </View>
   );
 };
@@ -110,7 +137,7 @@ const styles = StyleSheet.create({
   },
 
   descriptionTextWrapper: {
-    marginTop: 30,
+    marginTop: 25,
     marginHorizontal: 20,
   },
 
@@ -125,5 +152,23 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: colors.darkGray,
     height: 85,
+  },
+
+  infoWrapper: {
+    flexDirection: 'row',
+    marginHorizontal: 20,
+    marginBottom: 85,
+    justifyContent: 'space-between',
+  },
+
+  infoTitle: {
+    fontFamily: 'Lato-Bold',
+    fontSize: 12,
+    color: colors.gray,
+  },
+  infoTextWrapper: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    marginTop: 5,
   },
 });
