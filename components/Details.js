@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React from 'react';
 import {
   View,
@@ -66,6 +67,13 @@ const Details = ({navigation, route}) => {
           </View>
         </View>
       </View>
+
+      {/* Book Button */}
+      <TouchableOpacity
+        style={styles.buttonWrapper}
+        onPress={() => alert('You booked a trip')}>
+        <Text style={styles.buttonText}>Book Now</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -157,7 +165,7 @@ const styles = StyleSheet.create({
   infoWrapper: {
     flexDirection: 'row',
     marginHorizontal: 20,
-    marginBottom: 85,
+    // marginBottom: 85,
     justifyContent: 'space-between',
   },
 
@@ -170,5 +178,31 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-end',
     marginTop: 5,
+  },
+
+  infoText: {
+    fontFamily: 'Lato-Bold',
+    fontSize: 24,
+    color: colors.orange,
+  },
+  infoSubText: {
+    fontFamily: 'Lato-Bold',
+    fontSize: 14,
+    color: colors.black,
+  },
+
+  buttonWrapper: {
+    marginHorizontal: 20,
+    marginTop: 40,
+    marginBottom: 10,
+    backgroundColor: colors.orange,
+    alignItems: 'center',
+    paddingVertical: 15,
+    borderRadius: 10,
+  },
+  buttonText: {
+    fontFamily: 'Lato-Bold',
+    fontSize: 18,
+    color: colors.white,
   },
 });
