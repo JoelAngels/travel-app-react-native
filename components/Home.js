@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import {
   StyleSheet,
   Text,
@@ -5,6 +6,9 @@ import {
   ScrollView,
   Image,
   SafeAreaView,
+  FlatList,
+  ImageBackground,
+  TouchableOpacity,
 } from 'react-native';
 import React from 'react';
 import colors from '../assets/colors/colors';
@@ -20,6 +24,29 @@ import learnMoreData from '../assets/data/learnMoreData';
 import profile from '../assets/images/person.png';
 
 const Home = ({navigation}) => {
+  const renderDiscoverItem = ({item}) => {
+    return (
+      <TouchableOpacity>
+        <ImageBackground
+          source={item.image}
+          style={[
+            styles.discoverItem,
+            {
+              marginLeft: item.id === 'discover-1' ? 20 : 0,
+            },
+          ]}
+          imageStyle={styles.discoverItemImage}>
+          <Text style={styles.discoverItemTitle}>{item.title}</Text>
+
+          <View style={styles.discoverItemLocationTextWrapper}>
+            <Entypo name="location-pin" size={18} color={colors.white} />
+
+            <Text style={styles.discoverItemLocationText}>{item.location}</Text>
+          </View>
+        </ImageBackground>
+      </TouchableOpacity>
+    );
+  };
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -46,6 +73,15 @@ const Home = ({navigation}) => {
             <Text style={styles.discoverCategoryText}>Destinations</Text>
             <Text style={styles.discoverCategoryText}>Cities</Text>
             <Text style={styles.discoverCategoryText}>Experiences</Text>
+          </View>
+          <View style={styles.discoverItemsWrapper}>
+            <FlatList
+              data={discoverData}
+              renderItem={renderDiscoverItem}
+              keyExtractor={item => item.id}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+            />
           </View>
         </View>
       </ScrollView>
@@ -84,6 +120,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     fontFamily: 'Lato-Bold',
     fontSize: 32,
+    color: colors.black,
   },
 
   discoverCategoriesWrapper: {
@@ -100,5 +137,37 @@ const styles = StyleSheet.create({
   },
   discoverItemsWrapper: {
     paddingVertical: 20,
+  },
+
+  discoverItem: {
+    width: 170,
+    height: 250,
+    justifyContent: 'flex-end', //to make it stick to the bottom
+    paddingHorizontal: 10,
+    paddingVertical: 15,
+    marginRight: 20,
+  },
+
+  discoverItemImage: {
+    borderRadius: 20,
+  },
+
+  discoverItemTitle: {
+    fontFamily: 'Lato-Bold',
+    fontSize: 18,
+    color: colors.white,
+  },
+
+  discoverItemLocationWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 5,
+  },
+
+  discoverItemLocationText: {
+    marginLeft: 5,
+    fontFamily: 'Lato-Bold',
+    fontSize: 14,
+    color: colors.white,
   },
 });
