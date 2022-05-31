@@ -19,7 +19,7 @@ const Tab = createBottomTabNavigator();
 const TabNavigator = () => {
   return (
     <Tab.Navigator
-      tabBarOptions={{
+      screenOptions={{
         style: styles.tabBar,
         activeTintColor: colors.orange,
         inactiveTintColor: colors.gray,
@@ -32,6 +32,7 @@ const TabNavigator = () => {
           tabBarIcon: ({color}) => (
             <Entypo name="home" size={32} color={color} />
           ),
+          headerShown: false,
         }}
       />
       <Tab.Screen
@@ -60,7 +61,16 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="TabNavigator" component={TabNavigator} />
+        <Stack.Screen
+          name="TabNavigator"
+          component={TabNavigator}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Details"
+          component={Details}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
