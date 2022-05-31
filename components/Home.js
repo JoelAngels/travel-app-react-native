@@ -1,3 +1,4 @@
+/* eslint-disable react/self-closing-comp */
 /* eslint-disable react-native/no-inline-styles */
 import {
   StyleSheet,
@@ -60,7 +61,7 @@ const Home = ({navigation}) => {
         style={[
           styles.activityItemWrapper,
           {
-            marginLeft: item.id === 'activities-1' ? 10 : 0,
+            marginLeft: item.id === 'activities-1' ? 20 : 0,
           },
         ]}>
         <Image source={item.image} style={styles.activityItemImage} />
@@ -69,11 +70,19 @@ const Home = ({navigation}) => {
     );
   };
 
-  const renderLearnMoreItem = () => {
+  const renderLearnMoreItem = ({item}) => {
     return (
-      <View>
-        <Text>hahah</Text>
-      </View>
+      <ImageBackground
+        source={item.image}
+        style={[
+          styles.learnMoreItem,
+          {
+            marginLeft: 'learnMore-1' ? 20 : 0,
+          },
+        ]}
+        imageStyle={styles.learnMoreItemImage}>
+        <Text style={styles.learnMoreItemText}>{item.title}</Text>
+      </ImageBackground>
     );
   };
 
