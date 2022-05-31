@@ -1,4 +1,11 @@
-import {StyleSheet, Text, View, Button, ScrollView, Image} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Image,
+  SafeAreaView,
+} from 'react-native';
 import React from 'react';
 import colors from '../assets/colors/colors';
 
@@ -16,15 +23,30 @@ const Home = ({navigation}) => {
   return (
     <View style={styles.container}>
       <ScrollView>
-        {/* Header */}
-        <View style={styles.menuWrapper}>
-          <Feather
-            name="menu"
-            size={32}
-            color={colors.black}
-            style={styles.menuIcon}
-          />
-          <Image source={profile} style={styles.profileImage} />
+        <SafeAreaView>
+          {/* Header */}
+          <View style={styles.menuWrapper}>
+            <Feather
+              name="menu"
+              size={32}
+              color={colors.black}
+              style={styles.menuIcon}
+            />
+            <Image source={profile} style={styles.profileImage} />
+          </View>
+        </SafeAreaView>
+
+        {/* Discover */}
+        <View style={styles.discoverWrapper}>
+          <Text style={styles.discoverTitle}>Discover</Text>
+          <View style={styles.discoverCategoriesWrapper}>
+            <Text style={[styles.discoverCategoryText, {color: colors.orange}]}>
+              All
+            </Text>
+            <Text style={styles.discoverCategoryText}>Destinations</Text>
+            <Text style={styles.discoverCategoryText}>Cities</Text>
+            <Text style={styles.discoverCategoryText}>Experiences</Text>
+          </View>
         </View>
       </ScrollView>
     </View>
@@ -51,5 +73,32 @@ const styles = StyleSheet.create({
     width: 52,
     height: 52,
     borderRadius: 10,
+  },
+
+  discoverWrapper: {
+    // marginHorizontal: 20,
+    marginTop: 20,
+  },
+
+  discoverTitle: {
+    marginHorizontal: 20,
+    fontFamily: 'Lato-Bold',
+    fontSize: 32,
+  },
+
+  discoverCategoriesWrapper: {
+    marginHorizontal: 20,
+    flexDirection: 'row',
+    marginTop: 20,
+  },
+
+  discoverCategoryText: {
+    marginRight: 30,
+    fontFamily: 'Lato-Regular',
+    fontSize: 16,
+    color: colors.gray,
+  },
+  discoverItemsWrapper: {
+    paddingVertical: 20,
   },
 });

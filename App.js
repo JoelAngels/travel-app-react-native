@@ -33,6 +33,7 @@ const TabNavigator = () => {
             <Entypo name="home" size={32} color={color} />
           ),
           headerShown: false,
+          // showLabel: false,
         }}
       />
       <Tab.Screen
