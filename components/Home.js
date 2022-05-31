@@ -54,10 +54,17 @@ const Home = ({navigation}) => {
     );
   };
 
-  const renderActivityItem = () => {
+  const renderActivityItem = ({item}) => {
     return (
-      <View>
-        <Text>hahah</Text>
+      <View
+        style={[
+          styles.activityItemWrapper,
+          {
+            marginLeft: item.id === 'activities-1' ? 10 : 0,
+          },
+        ]}>
+        <Image source={item.image} style={styles.activityItemImage} />
+        <Text style={styles.activityItemText}>{item.title}</Text>
       </View>
     );
   };
@@ -235,7 +242,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   activityItemWrapper: {
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-end', //pus everything to the bottom / aligned up better
     alignItems: 'center',
     marginRight: 20,
   },
@@ -247,5 +254,34 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato-Bold',
     fontSize: 14,
     color: colors.gray,
+  },
+
+  learnMoreWrapper: {
+    marginTop: 10,
+  },
+  learnMoreTitle: {
+    marginHorizontal: 20,
+    fontFamily: 'Lato-Bold',
+    fontSize: 24,
+    color: colors.black,
+  },
+  learnMoreItemsWrapper: {
+    paddingVertical: 20,
+  },
+  learnMoreItem: {
+    width: 170,
+    height: 180,
+    justifyContent: 'flex-end',
+    marginRight: 20,
+  },
+  learnMoreItemImage: {
+    borderRadius: 20,
+  },
+  learnMoreItemText: {
+    fontFamily: 'Lato-Bold',
+    fontSize: 18,
+    color: colors.white,
+    marginHorizontal: 10,
+    marginVertical: 20,
   },
 });
