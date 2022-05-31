@@ -26,7 +26,13 @@ import profile from '../assets/images/person.png';
 const Home = ({navigation}) => {
   const renderDiscoverItem = ({item}) => {
     return (
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate('Details', {
+            //navigate to details page and send the data of the item and output it on the details page
+            item: item,
+          })
+        }>
         <ImageBackground
           source={item.image}
           style={[
@@ -47,6 +53,23 @@ const Home = ({navigation}) => {
       </TouchableOpacity>
     );
   };
+
+  const renderActivityItem = () => {
+    return (
+      <View>
+        <Text>hahah</Text>
+      </View>
+    );
+  };
+
+  const renderLearnMoreItem = () => {
+    return (
+      <View>
+        <Text>hahah</Text>
+      </View>
+    );
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -78,6 +101,34 @@ const Home = ({navigation}) => {
             <FlatList
               data={discoverData}
               renderItem={renderDiscoverItem}
+              keyExtractor={item => item.id}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+            />
+          </View>
+        </View>
+
+        {/* Activities */}
+        <View style={styles.activitiesWrapper}>
+          <Text style={styles.activitiesTitle}>Activities</Text>
+          <View style={styles.activitiesItemsWrapper}>
+            <FlatList
+              data={activitiesData}
+              renderItem={renderActivityItem}
+              keyExtractor={item => item.id}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+            />
+          </View>
+        </View>
+
+        {/* Learn More */}
+        <View style={styles.learnMoreWrapper}>
+          <Text style={styles.learnMoreTitle}>Learn More</Text>
+          <View style={styles.learnMoreItemsWrapper}>
+            <FlatList
+              data={learnMoreData}
+              renderItem={renderLearnMoreItem}
               keyExtractor={item => item.id}
               horizontal
               showsHorizontalScrollIndicator={false}
@@ -169,5 +220,32 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato-Bold',
     fontSize: 14,
     color: colors.white,
+  },
+
+  activitiesWrapper: {
+    marginTop: 10,
+  },
+  activitiesTitle: {
+    marginHorizontal: 20,
+    fontFamily: 'Lato-Bold',
+    fontSize: 24,
+    color: colors.black,
+  },
+  activitiesItemsWrapper: {
+    paddingVertical: 20,
+  },
+  activityItemWrapper: {
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    marginRight: 20,
+  },
+  activityItemImage: {
+    width: 36,
+  },
+  activityItemText: {
+    marginTop: 5,
+    fontFamily: 'Lato-Bold',
+    fontSize: 14,
+    color: colors.gray,
   },
 });
